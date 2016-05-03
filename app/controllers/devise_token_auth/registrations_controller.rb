@@ -48,7 +48,7 @@ module DeviseTokenAuth
               redirect_url: @redirect_url
             })
 
-          else
+          end
             # email auth has been bypassed, authenticate user
             @client_id = SecureRandom.urlsafe_base64(nil, false)
             @token     = SecureRandom.urlsafe_base64(nil, false)
@@ -61,7 +61,7 @@ module DeviseTokenAuth
             @resource.save!
 
             update_auth_header
-          end
+
           render_create_success
         else
           clean_up_passwords @resource
